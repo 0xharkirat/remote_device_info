@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "837715754635",
+    "project_id": "remote-device-info",
+    "storage_bucket": "remote-device-info.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837715754635:android:72ed29b56a76e98b63de8e",
+        "android_client_info": {
+          "package_name": "com.hsiharki.remote_device_info"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2Wx-Gs2qlGWbh8qYgpKnho7QeLDIwkUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
