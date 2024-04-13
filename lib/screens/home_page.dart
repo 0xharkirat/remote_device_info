@@ -1,6 +1,7 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:remote_device_info/services/battery_services.dart';
+import 'package:remote_device_info/services/device_info_services.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
@@ -11,6 +12,7 @@ class HomePageScreen extends StatefulWidget {
 
 class _HomePageScreenState extends State<HomePageScreen> {
   int? _batteryLevel;
+  String? _deviceName;
 
   @override
   void initState() {
@@ -21,9 +23,11 @@ class _HomePageScreenState extends State<HomePageScreen> {
 
   void _init() async {
     final int batteryLevel = await BatteryService.getBattery();
+    final String deviceName = await DeviceInfoServices.getDeviceName();
 
     setState(() {
       _batteryLevel = batteryLevel;
+      _deviceName = deviceName;
     });
   }
 
@@ -39,8 +43,22 @@ class _HomePageScreenState extends State<HomePageScreen> {
           )
         ],
       ),
-      body:  Center(
-        child: _batteryLevel == null? const Text("Your Battery Level will show here"): Text("Your battery level is: $_batteryLevel"),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _batteryLevel == null
+              ? const Text("Your Battery Level will show here")
+              : Text("Your battery level is: $_batteryLevel"),
+          const SizedBox(
+            height: 8,
+            width: double.infinity,
+          ),
+          _deviceName == null
+              ? const Text("Your Device name will show here...")
+              : Text("Your Device name is: $_deviceName"),
+
+        ],
       ),
     );
   }
